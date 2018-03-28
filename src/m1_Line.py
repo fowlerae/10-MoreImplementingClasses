@@ -4,7 +4,7 @@ NOTE: This is NOT rosegraphics -- it is your OWN Line class.
 
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
          their colleagues and Ashley Fowler.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import math
 import m1t_test_Line as m1t
@@ -15,7 +15,7 @@ import m1t_test_Line as m1t
 ########################################################################
 
 # ----------------------------------------------------------------------
-# TODO: 2. With your instructor, READ THE INSTRUCTIONS
+# Done: 2. With your instructor, READ THE INSTRUCTIONS
 #   in file  m0_INSTRUCTIONS.txt, asking questions as needed.
 #   Once you understand the instructions, mark this TO DO as DONE.
 #
@@ -42,10 +42,10 @@ def main():
         run_test_init()
     if m1t.is_implemented('clone'):
         run_test_clone()
-    #if m1t.is_implemented('reverse'):
-        #run_test_reverse()
-    #if m1t.is_implemented('slope'):
-        #run_test_slope()
+    if m1t.is_implemented('reverse'):
+        run_test_reverse()
+    if m1t.is_implemented('slope'):
+        run_test_slope()
     if m1t.is_implemented('length'):
         run_test_length()
     if m1t.is_implemented('get_number_of_clones'):
@@ -366,7 +366,7 @@ class Line(object):
             print(line1 == line2)    # Should now print: True
         """
         # --------------------------------------------------------------
-        # TODO: 5.
+        # Done: 5.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -374,8 +374,9 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # --------------------------------------------------------------
-        self = Line(self.end, self.start)
-
+        temp = self.start
+        self.start = self.end
+        self.end = temp
 
 
     def slope(self):
@@ -405,7 +406,7 @@ class Line(object):
           :rtype: float
         """
         # --------------------------------------------------------------
-        # TODO: 6.
+        # Done: 6.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -413,10 +414,14 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # --------------------------------------------------------------
-
-
-        return (self.end.y - self.start.y)/(self.end.x-self.start.x)
-
+        y = self.end.y - self.start.y
+        x = self.end.x - self.start.x
+        if y == 0:
+            return 0
+        if x == 0:
+            return math.inf
+        else:
+            return y/x
 
 
     def length(self):
