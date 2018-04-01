@@ -39,7 +39,7 @@ def main():
 
 
 # ----------------------------------------------------------------------
-# TODO: 2. Implement a class called   Baby   that has a constructor and
+# Done: 2. Implement a class called   Baby   that has a constructor and
 #   two methods, as described below.  Your finished Baby class should
 #   cause the code above to display the expected output.  Hint: Your
 #   class will need instance variables that you must figure out.
@@ -94,17 +94,24 @@ class Baby(object):
     def __init__(self,name):
         self.name = name
         print("Hello baby", self.name)
-        self.count_hour_passes = 0
-        self.times_called_feed_baby = 0
+        self.times_hour_passes_called = 0
+
 
 
     def feed_baby(self):
         print("Thank you very much for feeding", self.name)
-        self.times_called_feed_baby = self.times_called_feed_baby + 1
+        self.times_hour_passes_called = 0
 
 
     def hour_passes(self):
-        if self.
+        self.times_hour_passes_called = self.times_hour_passes_called + 1
+        if self.times_hour_passes_called == 1:
+            print("Baby", self.name, "is sleeping")
+        if self.times_hour_passes_called == 2:
+            print("Baby", self.name, "is awake. Time for food")
+        if self.times_hour_passes_called >= 3:
+            print("Baby", self.name, "is CRYING uncontrollably!  Feed the Baby! ")
+
 
 
 
