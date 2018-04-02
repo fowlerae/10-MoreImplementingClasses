@@ -142,13 +142,12 @@ class CapitalT(object):
         #   Implement this method
         #   Note: you will need to also implement attach_to before testing
         # --------------------------------------------------------------
-        self.intersection_center = intersection_center
-        self.intersection_center.x = intersection_center.x
-        self.intersection_center.y = intersection_center.y
-        h_rect_corner_1 = rg.Point(self.intersection_center.x + width/2, self.intersection_center.y + letter_thickness/2)
-        h_rect_corner_2 = rg.Point(self.intersection_center.x - width/2, self.intersection_center.y - letter_thickness/2)
-        v_rect_corner_1 = rg.Point(self.intersection_center.x + letter_thickness/2 , self.intersection_center.y + height)
-        v_rect_corner_2 = rg.Point(self.intersection_center.x - letter_thickness/2 , self.intersection_center.y - letter_thickness/2)
+        self.x = intersection_center.x
+        self.y = intersection_center.y
+        h_rect_corner_1 = rg.Point(self.x + width/2, self.y + letter_thickness/2)
+        h_rect_corner_2 = rg.Point(self.x - width/2, self.y - letter_thickness/2)
+        v_rect_corner_1 = rg.Point(self.x + letter_thickness/2 , self.y + height)
+        v_rect_corner_2 = rg.Point(self.x - letter_thickness/2 , self.y - letter_thickness/2)
         self.h_rect = rg.Rectangle(h_rect_corner_1, h_rect_corner_2)
         self.v_rect = rg.Rectangle(v_rect_corner_1, v_rect_corner_2)
 
@@ -243,9 +242,10 @@ class CapitalT(object):
         #     move_by.pdf. Note: the pdf shows the different locations
         #     that the T moves through, but there is only 1 T at any moment.
         # --------------------------------------------------------------
-        self.intersection_center.x = self.intersection_center.x + dx
-        self.intersection_center.y = self.intersection_center.y + dy
-        #self.intersection_center = rg.Point(self.intersection_center.x,self.intersection_center.y)
+        self.x = self.x + dx
+        self.y = self.y + dy
+
+
 
 
     def clone(self):
