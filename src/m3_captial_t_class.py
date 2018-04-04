@@ -19,7 +19,7 @@ def main():
     run_test_simple_t()
     run_test_set_colors()
     run_test_move_by()
-    # run_test_clone()
+    run_test_clone()
 
 
 def run_test_simple_t():
@@ -144,12 +144,16 @@ class CapitalT(object):
         # --------------------------------------------------------------
         self.x = intersection_center.x
         self.y = intersection_center.y
-        h_rect_corner_1 = rg.Point(self.x + width/2, self.y + letter_thickness/2)
-        h_rect_corner_2 = rg.Point(self.x - width/2, self.y - letter_thickness/2)
-        v_rect_corner_1 = rg.Point(self.x + letter_thickness/2 , self.y + height)
-        v_rect_corner_2 = rg.Point(self.x - letter_thickness/2 , self.y - letter_thickness/2)
-        self.h_rect = rg.Rectangle(h_rect_corner_1, h_rect_corner_2)
-        self.v_rect = rg.Rectangle(v_rect_corner_1, v_rect_corner_2)
+        self.width = width
+        self.letter_thickness = letter_thickness
+        self.height = height
+        self.h_rect_corner_1 = rg.Point(self.x + width/2, self.y + letter_thickness/2)
+        self.h_rect_corner_2 = rg.Point(self.x - width/2, self.y - letter_thickness/2)
+        self.v_rect_corner_1 = rg.Point(self.x + letter_thickness/2 , self.y + height)
+        self.v_rect_corner_2 = rg.Point(self.x - letter_thickness/2 , self.y - letter_thickness/2)
+        self.h_rect = rg.Rectangle(self.h_rect_corner_1, self.h_rect_corner_2)
+        self.v_rect = rg.Rectangle(self.v_rect_corner_1, self.v_rect_corner_2)
+
 
 
     def attach_to(self, window):
@@ -235,15 +239,23 @@ class CapitalT(object):
           :type dy: int
         """
         # --------------------------------------------------------------
-        # TODO: 6.
+        # Done: 6.
         #   READ the above specification, including the Example.
         #   Implement and test this method by uncommenting the appropriate
         #     run_test method in main. Compare the graphics window to
         #     move_by.pdf. Note: the pdf shows the different locations
         #     that the T moves through, but there is only 1 T at any moment.
         # --------------------------------------------------------------
-        self.x = self.x + dx
-        self.y = self.y + dy
+
+
+        self.v_rect.corner_1.x = self.v_rect.corner_1.x + dx
+        self.v_rect.corner_1.y = self.v_rect.corner_1.y + dy
+        self.v_rect.corner_2.x = self.v_rect.corner_2.x + dx
+        self.v_rect.corner_2.y = self.v_rect.corner_2.y + dy
+        self.h_rect.corner_1.x = self.h_rect.corner_1.x + dx
+        self.h_rect.corner_1.y = self.h_rect.corner_1.y + dy
+        self.h_rect.corner_2.x = self.h_rect.corner_2.x + dx
+        self.h_rect.corner_2.y = self.h_rect.corner_2.y + dy
 
 
 
@@ -268,12 +280,13 @@ class CapitalT(object):
           :rtype: CapitalT
         """
         # --------------------------------------------------------------
-        # TODO: 7.
+        # Done: 7.
         #   READ the above specification, including the Example.
         #   Implement and test this method by uncommenting the appropriate
         #     run_test method in main. Compare the graphics window to
         #     clone.pdf.
         # --------------------------------------------------------------
+        return CapitalT(rg.Point(self.x,self.y), self.width,self.height,self.letter_thickness)
 
 
 # ----------------------------------------------------------------------
